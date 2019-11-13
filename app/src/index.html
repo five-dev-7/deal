@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MetaCoin | Truffle Webpack Demo w/ Frontend</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  </head>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 12px;
+    }
+  </style>
+  <body>
+    <h1>Deal — Example Truffle Dapp</h1>
+    <p>Selected Address :  <strong class="address">loading...</strong> </p>
+    <p>You have <strong class="balance">loading...</strong> ETH</p>
+
+    <h1>Create Deal</h1>
+
+    <label for="title">Title:</label>
+    <input type="text" id="title" placeholder="" />
+    <label for="content">Content:</label>
+    <input type="text" id="content" placeholder="" />
+    <label for="amount">Amount:</label>
+    <input type="text" id="amount" placeholder="" />
+    <label for="exTime">exTime:</label>
+    <input type="text" id="exTime" value=24 placeholder="" />
+    <label for="isBuyer">IsBuyer:</label>
+    <input type="text" id="isBuyer" value="true" placeholder="true" />
+
+    <button onclick="App.newOrder()">Create new order</button>
+
+    <p id="status"></p>
+    <script src="index.js"></script>
+  </body>
+</html>
