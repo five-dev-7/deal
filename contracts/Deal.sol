@@ -14,7 +14,6 @@ contract Deal {
     uint __feeValue = 5 ; // fee = amount/1000*__feeValue ;
     uint256 __maxAmount = 10000 ether ;
     
-
     struct Order {
         uint256 index ;
         string title ;
@@ -52,6 +51,8 @@ contract Deal {
     function makeOrderKey( address _creator , uint256 _index ) public pure returns (bytes32 _indexKey ){
         _indexKey = keccak256( abi.encodePacked( uint256( _creator) , _index )  ) ;
     } 
+
+    event createOrderEvent( address _creator , bytes32 _orderNo ) ;
 
     function createOrder(string memory _title , string memory _content , bool _isBuyOrder , 
             uint256 _amount , uint exTime ) payable
@@ -106,6 +107,7 @@ contract Deal {
             createTime : now ,
             lastTime : now 
         }); 
+        emit createOrderEvent( _creator , _orderKey ) ;
         return _orderKey ;
 
     }
