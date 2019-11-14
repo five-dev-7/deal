@@ -18,6 +18,7 @@ const App = {
         dealArtifact.abi,
         deployedNetwork.address,
       );
+      this.initEvent() ;
       this.refreshInfo();
     } catch (error) {
       console.error("Could not connect to contract or chain.");
@@ -36,6 +37,18 @@ const App = {
         .send({from:this.account , value : web3.toWei(amount)}).then( res => {
           console.log( res ) ;
         })
+  },
+  initEvent : function() {
+    this.deal.events.createOrderEvent({},
+       function(){})
+       .on('data', function(result){
+         if( result ){
+           const _creator = result["returnValues"]["_creator"];
+           const _orderNo = result["returnValues"]["_orderNo"];
+           $("#status").text(" Creator :  " + _creator + " , OrderNo : " + _orderNo );
+         }
+        })
+    console.log("Init event success.")
   },
   refreshInfo : function() {
     this.account = App.web3.currentProvider.selectedAddress ;
